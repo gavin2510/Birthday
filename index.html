@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For My Girlfriend 💝</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+        color: #5a4a42;
+        overflow-x: hidden;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 40px 20px;
+        animation: fadeInDown 1s ease;
+      }
+      .header h1 {
+        font-size: 3em;
+        color: #8b6f5c;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+      }
+      .header p {
+        font-size: 1.3em;
+        color: #a0826d;
+      }
+
+      /* Carousel */
+      .carousel-section {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease;
+      }
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 15px;
+      }
+      .carousel-slide {
+        display: none;
+        width: 100%;
+        animation: fadeIn 0.5s;
+      }
+      .carousel-slide.active {
+        display: block;
+      }
+      .carousel-slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+
+      .carousel-controls {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .carousel-btn {
+        background: #a0826d;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        margin: 0 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: all 0.3s;
+      }
+      .carousel-btn:hover {
+        background: #8b6f5c;
+        transform: scale(1.05);
+      }
+
+      .carousel-dots {
+        text-align: center;
+        margin-top: 15px;
+      }
+      .dot {
+        height: 12px;
+        width: 12px;
+        margin: 0 5px;
+        background-color: #d4c4b7;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .dot.active {
+        background-color: #a0826d;
+        transform: scale(1.3);
+      }
+
+      /* Message Section */
+      .message-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1.2s ease;
+      }
+      .message-section h2 {
+        color: #8b6f5c;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .message-text {
+        line-height: 1.8;
+        font-size: 1.1em;
+        color: #5a4a42;
+        text-align: justify;
+      }
+
+      /* Quiz Section */
+      .quiz-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1.4s ease;
+      }
+      .quiz-section h2 {
+        color: #8b6f5c;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .question {
+        margin: 25px 0;
+        padding: 20px;
+        background: #f9f5f1;
+        border-radius: 10px;
+      }
+      .question h3 {
+        color: #8b6f5c;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+      }
+      .quiz-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .quiz-option {
+        background: white;
+        border: 2px solid #d4c4b7;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .quiz-option:hover {
+        border-color: #a0826d;
+        background: #faf8f5;
+      }
+      .quiz-option.selected {
+        background: #a0826d;
+        color: white;
+        border-color: #8b6f5c;
+      }
+      .quiz-submit {
+        background: #a0826d;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        margin-top: 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1.1em;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s;
+      }
+      .quiz-submit:hover {
+        background: #8b6f5c;
+        transform: scale(1.05);
+      }
+      .quiz-result {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.2em;
+        display: none;
+      }
+      .quiz-result.show {
+        display: block;
+        animation: fadeIn 0.5s;
+      }
+
+      /* Memory Game Section */
+      .memory-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1.6s ease;
+      }
+      .memory-section h2 {
+        color: #8b6f5c;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .memory-stats {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .stat-item {
+        background: #f9f5f1;
+        padding: 15px 25px;
+        border-radius: 10px;
+        text-align: center;
+      }
+      .stat-label {
+        color: #8b6f5c;
+        font-size: 0.9em;
+        margin-bottom: 5px;
+      }
+      .stat-value {
+        color: #a0826d;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .memory-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 15px;
+        max-width: 500px;
+        margin: 0 auto 20px;
+      }
+      .memory-card {
+        aspect-ratio: 1;
+        background: #a0826d;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5em;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+      .memory-card:hover {
+        transform: scale(1.05);
+      }
+      .memory-card.flipped {
+        background: white;
+        border: 3px solid #a0826d;
+      }
+      .memory-card.matched {
+        background: #d4edda;
+        border: 3px solid #28a745;
+        cursor: default;
+      }
+      .memory-card.wrong {
+        animation: shake 0.5s;
+      }
+
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2em;
+      }
+      .card-front {
+        display: none;
+      }
+      .memory-card.flipped .card-back {
+        display: none;
+      }
+      .memory-card.flipped .card-front {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .memory-controls {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .memory-btn {
+        background: #a0826d;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        margin: 5px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: all 0.3s;
+      }
+      .memory-btn:hover {
+        background: #8b6f5c;
+        transform: scale(1.05);
+      }
+      .memory-message {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.1em;
+        color: #8b6f5c;
+        min-height: 30px;
+        font-weight: bold;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 30px;
+        color: #8b6f5c;
+        font-size: 1.1em;
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2em;
+        }
+        .carousel-slide img {
+          height: 300px;
+        }
+        .message-section,
+        .quiz-section,
+        .memory-section {
+          padding: 25px;
+        }
+        .memory-grid {
+          max-width: 350px;
+          gap: 10px;
+        }
+        .memory-card {
+          font-size: 2em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1>🎂 Happy Birthday Salma Sayang! 🎉</h1>
+        <p>Untuk Pacarku yang Berumur 21 Tahun ❤️</p>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel-section">
+        <h2 style="color: #8b6f5c; text-align: center; margin-bottom: 20px">
+          Your & Our Moments 📸
+        </h2>
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="1.jpg" alt="Foto 1" />
+          </div>
+          <div class="carousel-slide">
+            <img src="2.jpg" alt="Foto 2" />
+          </div>
+          <div class="carousel-slide">
+            <img src="3.jpg" alt="Foto 3" />
+          </div>
+          <div class="carousel-slide">
+            <img src="4.jpg" alt="Foto 4" />
+          </div>
+          <div class="carousel-slide">
+            <img src="5.jpg" alt="Foto 5" />
+          </div>
+          <div class="carousel-slide">
+            <img src="6.jpg" alt="Foto 6" />
+          </div>
+          <div class="carousel-slide">
+            <img src="7.jpg" alt="Foto 7" />
+          </div>
+          <div class="carousel-slide">
+            <img src="8.jpg" alt="Foto 8" />
+          </div>
+          <div class="carousel-slide">
+            <img src="9.jpg" alt="Foto 9" />
+          </div>
+          <div class="carousel-slide">
+            <img src="10.jpg" alt="Foto 10" />
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="prevSlide()">← Previous</button>
+          <button class="carousel-btn" onclick="nextSlide()">Next →</button>
+        </div>
+        <div class="carousel-dots" id="dotsContainer"></div>
+      </div>
+
+      <!-- Message -->
+      <div class="message-section">
+        <h2>💌 Little Message For You</h2>
+        <div class="message-text">
+          <p style="margin-bottom: 15px">Haii Salmaa 💕</p>
+          <p style="margin-bottom: 15px">
+            Selamat ulang tahun ya sayang! Di hari spesialmu ini, aku cuma bisa
+            berdoa semoga Allah selalu melindungi kamu, diberikan kesehatan,
+            kebahagiaan, dan keberkahan di setiap kegiatanmu. Semoga semua
+            impian dan cita-citamu tercapai, dan semoga kamu selalu dikelilingi
+            oleh orang-orang yang selalu sayang sama kamu, terutama aku! Hehe 😄
+          </p>
+          <p style="margin-bottom: 15px">
+            Makasih ya udah mau jadi bagian terbesar dari hidupku. Makasih udah
+            sabar ngadepin aku yang sering annoying, sering cuek, sering lupa
+            ini-itu (tapi kamu tetep sayang kan hehe). Sejujurnya bisa bareng
+            sama kamu terus itu hal yang indah bagi aku. Meskupun aku sering
+            bilang kamu cerewet, bawel, dan ganggu. Tapi mungkin kalau ngga ada
+            kamu aku ngga bisa ada di posisi yang sekarang hehe! 🤭
+          </p>
+          <p style="margin-bottom: 15px">
+            Aku bersyukur banget bisa kenal kamu, bisa ngalamin momen-momen
+            menyenangkan bareng kamu. Dari yang seru-seru sampe yang bikin kita
+            berdua ngakak gak jelas. Dari yang romantis sampai yang random abis.
+            Semua perjalanan itu berharga banget buat aku, dan aku pengen terus
+            bikin kenangan-kenangan baru sama kamu! 💫
+          </p>
+          <p style="margin-bottom: 15px">
+            Salma, I want you to know that you're not just my girlfriend, you're
+            my best friend, my partner in crime, my comfort zone, dan salah satu
+            orang yang paling aku sayang di dunia ini. Kamu itu istimewa banget,
+            bukan cuma di mataku tapi juga di mata semua orang yang kenal kamu.
+            Your kindness, your smile, your laugh, everything about you is just
+            perfect! 🥰
+          </p>
+          <p style="margin-bottom: 15px">
+            Di umur mu sekarang ini, aku berharap kita bisa terus tumbuh bareng,
+            saling support, saling ngerti, dan tentunya makin sayang satu sama
+            lain. Apapun yang terjadi, aku akan selalu berusaha ada buat kamu.
+            Through ups and downs, happy and sad, aku akan tetap di sampingmu
+            anjayy! 🤝
+          </p>
+          <p style="margin-bottom: 15px">
+            Oh iya, maaf ya kalo hadiah dari aku cuma bikin hal simpel ini. Tapi
+            ini aku buat dengan ketulusan hati aku ciakhhh! Semoga kamu suka ya
+            sayang. Kan cowo effort mahall, yoi gaa? 😅💝
+          </p>
+          <p style="margin-bottom: 15px">
+            Sekali lagi, HAPPY BIRTHDAY SALMA SAYANG! Semoga panjang umur, sehat
+            selalu, makin cantik (udah cantik sih sebenernya hehe), makin ndut,
+            makin sukses, dan makin bahagia! I love you to the moon and back!
+            🌙✨
+          </p>
+          <p
+            style="
+              text-align: center;
+              font-weight: bold;
+              font-size: 1.2em;
+              color: #8b6f5c;
+              margin-top: 20px;
+            "
+          >
+            Forever yours ❤️<br />
+            Your favorite person 😘
+          </p>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="quiz-section">
+        <h2>🎯 Quiz: Tes Pengetahuan Salma</h2>
+        <p style="text-align: center; margin-bottom: 20px">
+          Kalau ga bener semua kecewa berat sih inii!
+        </p>
+
+        <div class="question">
+          <h3>1. Kenapa kita balikan lagi setelah putus lama?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="1" data-answer="a">
+              A. Kamu gamon sama Gavin dan kangen Gavin parah
+            </div>
+            <div class="quiz-option" data-question="1" data-answer="b">
+              B. Gavin pengen pacaran lagi sama kamu
+            </div>
+            <div class="quiz-option" data-question="1" data-answer="c">
+              C. Pelarian dari mantan busukmu itu
+            </div>
+            <div class="quiz-option" data-question="1" data-answer="d">
+              D. Gaada opsi cowo lain
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>2. Apa alasan kita bisa ngobrol pertama kali?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="2" data-answer="a">
+              A. Kamu butuh teman curhat
+            </div>
+            <div class="quiz-option" data-question="2" data-answer="b">
+              B. Karena kamu udah ngincer aku karena aku ganteng abis
+            </div>
+            <div class="quiz-option" data-question="2" data-answer="c">
+              C. Kamu pake pelet biar aku mau ngobrol sama kamu
+            </div>
+            <div class="quiz-option" data-question="2" data-answer="d">
+              D. Karena hoki aja ada kesempatan ngobrol berdua
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>3. Apa makanan favorit Gavin?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="3" data-answer="a">
+              A. Mie Ayam
+            </div>
+            <div class="quiz-option" data-question="3" data-answer="b">
+              B. Sushi
+            </div>
+            <div class="quiz-option" data-question="3" data-answer="c">
+              C. Ayam Goreng
+            </div>
+            <div class="quiz-option" data-question="3" data-answer="d">
+              D. Ketoprak
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>4. Siapa yang lebih sering marah-marah?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="4" data-answer="a">
+              A. Gavin
+            </div>
+            <div class="quiz-option" data-question="4" data-answer="b">
+              B. Gavin lagi
+            </div>
+            <div class="quiz-option" data-question="4" data-answer="c">
+              C. Lagi-lagi Gavin
+            </div>
+            <div class="quiz-option" data-question="4" data-answer="d">
+              D. Salma
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>5. Film bioskop pertama yang kita tonton bareng?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="5" data-answer="a">
+              A. Dr.Dolittle
+            </div>
+            <div class="quiz-option" data-question="5" data-answer="b">
+              B. Mariposa
+            </div>
+            <div class="quiz-option" data-question="5" data-answer="c">
+              C. Milea: Suara dari Dilan
+            </div>
+            <div class="quiz-option" data-question="5" data-answer="d">
+              D. Conjuring 3
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>6. Kenapa aku bisa suka sama kamu?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="6" data-answer="a">
+              A. Karena salma bawel, cerewet, dan marah-marah mulu
+            </div>
+            <div class="quiz-option" data-question="6" data-answer="b">
+              B. Karena salma baik, penyayang, dan lemah lembut
+            </div>
+            <div class="quiz-option" data-question="6" data-answer="c">
+              C. Karena salma ndut ndut endut
+            </div>
+            <div class="quiz-option" data-question="6" data-answer="d">
+              D. Karena males aja cari cewe lain
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>7. Apa panggilan sayang kita kalau ada orang tua aku?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="7" data-answer="a">
+              A. Beb
+            </div>
+            <div class="quiz-option" data-question="7" data-answer="b">
+              B. Byy
+            </div>
+            <div class="quiz-option" data-question="7" data-answer="c">
+              C. Dut
+            </div>
+            <div class="quiz-option" data-question="7" data-answer="d">
+              D. Honey
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>8. Hobi Gavin apa hayoo?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="8" data-answer="a">
+              A. Olahraga dan main musik
+            </div>
+            <div class="quiz-option" data-question="8" data-answer="b">
+              B. Main game
+            </div>
+            <div class="quiz-option" data-question="8" data-answer="c">
+              C. Bermain bareng Salma
+            </div>
+            <div class="quiz-option" data-question="8" data-answer="d">
+              D. Jailin Salma terus dan cubit-cubit lemak
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>9. Siapa yang bertugas membayar untuk next jalan-jalan?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="9" data-answer="a">
+              A. Salma semua semua dibayar sama salma hwehwe
+            </div>
+            <div class="quiz-option" data-question="9" data-answer="b">
+              B. Gavin aja banyak duit
+            </div>
+            <div class="quiz-option" data-question="9" data-answer="c">
+              C. Patungan lah biar adil
+            </div>
+            <div class="quiz-option" data-question="9" data-answer="d">
+              D. Gausah jalan-jalan lah boros
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>10. Warna favorit Gavin apa?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="10" data-answer="a">
+              A. Merah & hitam
+            </div>
+            <div class="quiz-option" data-question="10" data-answer="b">
+              B. Pink & Abu-abu
+            </div>
+            <div class="quiz-option" data-question="10" data-answer="c">
+              C. Putih & Krem
+            </div>
+            <div class="quiz-option" data-question="10" data-answer="d">
+              D. Biru & Hijau
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>11. Siapa yang lebih romantis?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="11" data-answer="a">
+              A. Salma
+            </div>
+            <div class="quiz-option" data-question="11" data-answer="b">
+              B. Sama-sama romantis
+            </div>
+            <div class="quiz-option" data-question="11" data-answer="c">
+              C. Gavin lah jelas parah
+            </div>
+            <div class="quiz-option" data-question="11" data-answer="d">
+              D. Cuek semua
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>12. Gavin kost dimana?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="12" data-answer="a">
+              A. Sukabirus
+            </div>
+            <div class="quiz-option" data-question="12" data-answer="b">
+              B. Ciganitri
+            </div>
+            <div class="quiz-option" data-question="12" data-answer="c">
+              C. Babakan Ciamis
+            </div>
+            <div class="quiz-option" data-question="12" data-answer="d">
+              D. Sukapura
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>13. Kebiasaan Gavin yang paling lucu menurut kamu?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="13" data-answer="a">
+              A. Gavin mah lucu teruss lah selaluu
+            </div>
+            <div class="quiz-option" data-question="13" data-answer="b">
+              B. Suka yapping bacot gajelas
+            </div>
+            <div class="quiz-option" data-question="13" data-answer="c">
+              C. Ketawa gak jelas karena ngayal sendiri
+            </div>
+            <div class="quiz-option" data-question="13" data-answer="d">
+              D. Kalau Gavin main gitar dan nyanyi
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>14. Apa yang paling aku suka dari Salma?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="14" data-answer="a">
+              A. Cantiknya dongg
+            </div>
+            <div class="quiz-option" data-question="14" data-answer="b">
+              B. Semuanya lahh
+            </div>
+            <div class="quiz-option" data-question="14" data-answer="c">
+              C. Kepribadiannya sih
+            </div>
+            <div class="quiz-option" data-question="14" data-answer="d">
+              D. Senyumnya manis
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <h3>15. Harapan kita untuk kedepannya?</h3>
+          <div class="quiz-options">
+            <div class="quiz-option" data-question="15" data-answer="a">
+              A. Yang penting bahagia
+            </div>
+            <div class="quiz-option" data-question="15" data-answer="b">
+              B. Langgeng terus pokoknya
+            </div>
+            <div class="quiz-option" data-question="15" data-answer="c">
+              C. Sampe ke pelaminan dong
+            </div>
+            <div class="quiz-option" data-question="15" data-answer="d">
+              D. Jalanin ae dulu ah
+            </div>
+          </div>
+        </div>
+
+        <button class="quiz-submit" onclick="checkQuiz()">
+          Lihat Hasil 🎊
+        </button>
+        <div class="quiz-result" id="quizResult"></div>
+      </div>
+
+      <!-- Memory Card Game -->
+      <div class="memory-section">
+        <h2>🃏 Memory Card Game</h2>
+        <p style="text-align: center; margin-bottom: 20px">
+          Temukan pasangan kartu yang sama!
+        </p>
+
+        <div class="memory-stats">
+          <div class="stat-item">
+            <div class="stat-label">Percobaan</div>
+            <div class="stat-value" id="moves">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Pasangan Cocok</div>
+            <div class="stat-value" id="matches">0 / 5</div>
+          </div>
+        </div>
+
+        <div class="memory-grid" id="memoryGrid"></div>
+
+        <div class="memory-controls">
+          <button class="memory-btn" onclick="startMemoryGame()">
+            Mulai Baru 🎮
+          </button>
+        </div>
+        <div class="memory-message" id="memoryMessage"></div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>Made with ❤️ for the most amazing person in the world</p>
+        <p>A Special Day for Salma</p>
+      </div>
+    </div>
+
+    <script>
+      // ---------- Carousel functionality ----------
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".carousel-slide");
+      const totalSlides = slides.length;
+
+      function initDots() {
+        const dotsContainer = document.getElementById("dotsContainer");
+        dotsContainer.innerHTML = "";
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement("span");
+          dot.className = "dot";
+          if (i === 0) dot.classList.add("active");
+          dot.onclick = () => goToSlide(i);
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
+        });
+      }
+
+      function showSlide(n) {
+        // normalize requested index and set currentSlide
+        if (typeof n !== "number") n = currentSlide;
+        if (n >= totalSlides) n = 0;
+        if (n < 0) n = totalSlides - 1;
+        currentSlide = n;
+
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[currentSlide].classList.add("active");
+        updateDots();
+      }
+
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentSlide - 1);
+      }
+
+      function goToSlide(n) {
+        showSlide(n);
+      }
+
+      // ---------- Quiz functionality ----------
+      // Correct answers for 15 questions (adjust if you want different correct choices)
+      const quizAnswers = {
+        1: "a",
+        2: "b",
+        3: "c",
+        4: "d",
+        5: "a",
+        6: "b",
+        7: "c",
+        8: "d",
+        9: "a",
+        10: "b",
+        11: "c",
+        12: "d",
+        13: "a",
+        14: "b",
+        15: "c",
+      };
+
+      let userAnswers = {};
+
+      // attach click handlers for options
+      document.querySelectorAll(".quiz-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const question = this.getAttribute("data-question");
+          const answer = this.getAttribute("data-answer");
+
+          // Remove selected class from other options in same question
+          const questionOptions = document.querySelectorAll(
+            `[data-question="${question}"]`
+          );
+          questionOptions.forEach((opt) => opt.classList.remove("selected"));
+
+          // Add selected class to clicked option
+          this.classList.add("selected");
+
+          // Store answer (as string key)
+          userAnswers[question] = answer;
+        });
+      });
+
+      function checkQuiz() {
+        let score = 0;
+        const totalQuestions = Object.keys(quizAnswers).length;
+
+        // Check if all questions answered
+        if (Object.keys(userAnswers).length < totalQuestions) {
+          alert("Jawab semua dulu woyy!!");
+          return;
+        }
+
+        // Calculate score
+        for (let q in quizAnswers) {
+          if (userAnswers[q] === quizAnswers[q]) {
+            score++;
+          }
+        }
+
+        // Show result
+        const resultDiv = document.getElementById("quizResult");
+        const percentage = (score / totalQuestions) * 100;
+
+        let message = "";
+        let bgColor = "";
+
+        if (percentage === 100) {
+          message = `🎉 PERFECT! ${score}/${totalQuestions} Anjayyy! Keren bat mahall! Love you! 💕`;
+          bgColor = "#d4edda";
+        } else if (percentage >= 70) {
+          message = `😊 Bagus! ${score}/${totalQuestions} Okee lah! Parah ga bener semua!`;
+          bgColor = "#d1ecf1";
+        } else if (percentage >= 50) {
+          message = `😅 Kureng! ${score}/${totalQuestions} Astagaa! Parah sih inimah asli!`;
+          bgColor = "#fff3cd";
+        } else {
+          message = `😢 Kacau... ${score}/${totalQuestions} Wahh kecewa. Udahlah males aing mah!`;
+          bgColor = "#f8d7da";
+        }
+
+        resultDiv.innerHTML = message;
+        resultDiv.style.backgroundColor = bgColor;
+        resultDiv.classList.add("show");
+        // scroll to result for better UX
+        resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      // ---------- Memory Card Game ----------
+      const emojis = ["❤️", "💕", "🌹", "💝", "🎁"];
+      let memoryCards = [];
+      let flippedCards = [];
+      let matchedPairs = 0;
+      let moves = 0;
+      let canFlip = true;
+
+      function initMemoryGame() {
+        // Create pairs and shuffle
+        memoryCards = [...emojis, ...emojis];
+        memoryCards.sort(() => Math.random() - 0.5);
+
+        const grid = document.getElementById("memoryGrid");
+        grid.innerHTML = "";
+
+        memoryCards.forEach((emoji, index) => {
+          const card = document.createElement("div");
+          card.className = "memory-card";
+          card.dataset.index = index;
+          card.dataset.emoji = emoji;
+
+          card.innerHTML = `
+                    <div class="card-back">?</div>
+                    <div class="card-front">${emoji}</div>
+                `;
+
+          card.addEventListener("click", flipCard);
+          grid.appendChild(card);
+        });
+      }
+
+      function flipCard() {
+        if (!canFlip) return;
+        if (
+          this.classList.contains("flipped") ||
+          this.classList.contains("matched")
+        )
+          return;
+        if (flippedCards.length >= 2) return;
+
+        this.classList.add("flipped");
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+          moves++;
+          document.getElementById("moves").textContent = moves;
+          checkMatch();
+        }
+      }
+
+      function checkMatch() {
+        canFlip = false;
+        const [card1, card2] = flippedCards;
+        const emoji1 = card1.dataset.emoji;
+        const emoji2 = card2.dataset.emoji;
+
+        if (emoji1 === emoji2) {
+          // Match found
+          setTimeout(() => {
+            card1.classList.add("matched");
+            card2.classList.add("matched");
+            card1.classList.remove("flipped");
+            card2.classList.remove("flipped");
+
+            matchedPairs++;
+            document.getElementById(
+              "matches"
+            ).textContent = `${matchedPairs} / 5`;
+
+            if (matchedPairs === 5) {
+              setTimeout(() => {
+                document.getElementById(
+                  "memoryMessage"
+                ).textContent = `🎉 Anjayy keren-keren, ini tujuannya biar kamu ga lupa mulu!`;
+              }, 500);
+            }
+
+            flippedCards = [];
+            canFlip = true;
+          }, 500);
+        } else {
+          // No match
+          setTimeout(() => {
+            card1.classList.add("wrong");
+            card2.classList.add("wrong");
+
+            setTimeout(() => {
+              card1.classList.remove("flipped", "wrong");
+              card2.classList.remove("flipped", "wrong");
+              flippedCards = [];
+              canFlip = true;
+            }, 500);
+          }, 500);
+        }
+      }
+
+      function startMemoryGame() {
+        matchedPairs = 0;
+        moves = 0;
+        flippedCards = [];
+        canFlip = true;
+
+        document.getElementById("moves").textContent = "0";
+        document.getElementById("matches").textContent = "0 / 5";
+        document.getElementById("memoryMessage").textContent = "";
+
+        initMemoryGame();
+      }
+
+      // Initialize everything when page loads
+      window.addEventListener("load", () => {
+        initDots();
+        showSlide(0);
+        startMemoryGame();
+      });
+    </script>
+  </body>
+</html>
